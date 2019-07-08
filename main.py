@@ -41,8 +41,8 @@ def main():
 	proxy_cfg.server_addr = "sip:shookke.fl.3cx.us"
 	proxy_cfg.register_enabled = True
 	core.add_proxy_config(proxy_cfg)
-	core.invite("sip:000@shookke.fl.3cx.us")
-
+	#core.invite("sip:000@shookke.fl.3cx.us")
+	core.invite("sip:3213013301@shookke.fl.3cx.us")
 
 	iterate_timer = QTimer()
 	iterate_timer.timeout.connect(core.iterate)
