@@ -2,7 +2,7 @@ import linphone
 import logging
 import sys
 from PyQt5.QtCore import QTimer
-from PyQt5.QtWidgets import QApplication
+from PyQt5.QtWidgets import QApplication, QLabel
 
 def main():
 	logging.basicConfig(level=logging.INFO)
@@ -50,7 +50,10 @@ def main():
 	stop_timer.timeout.connect(app.quit)
 	iterate_timer.start(20)
 	stop_timer.start(5000)
-
+	
+	label = QLabel("Hello World!")
+	label.show()
+	
 	exitcode = app.exec_()
 	sys.exit(exitcode)
 
