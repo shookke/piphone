@@ -2,7 +2,7 @@ import linphone
 import logging
 import sys
 from PyQt5.QtCore import QTimer
-from PyQt5.QtWidgets import QApplication, QLabel
+from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QLabel, QVBoxLayout
 
 def main():
 	logging.basicConfig(level=logging.INFO)
@@ -51,8 +51,12 @@ def main():
 	iterate_timer.start(20)
 	stop_timer.start(5000)
 	
-	label = QLabel("Hello World!")
-	label.show()
+	window = QWidget()
+	layout = QVBoxLayout()
+	for num in range(0-9):
+		layout.addWidget(QPushButton(num))
+	window.setLayout(layout)
+	window.showFullScreen()
 	
 	exitcode = app.exec_()
 	sys.exit(exitcode)

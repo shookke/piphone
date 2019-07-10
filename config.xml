@@ -1,0 +1,15 @@
+<config xmlns="http://www.linphone.org/xsds/lpconfig.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.linphone.org/xsds/lpconfig.xsd lpconfig.xsd">
+
+ <section name="sip">
+    <entry name="sip_tcp_port">5060</entry>
+    <entry name="dscp">0x0</entry>
+    <entry name="ping_with_options">0</entry>
+</section>
+<section name="video_codec_0">
+    <entry name="mime">H264</entry>
+    <entry name="rate">90000</entry>
+    <entry name="enabled">1</entry>
+</section>
+<section name="misc">
+<entry name="transient_provisioning">1</entry>
+</section>
