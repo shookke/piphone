@@ -53,7 +53,7 @@ def main():
 	stop_timer = QTimer()
 	stop_timer.timeout.connect(app.quit)
 	iterate_timer.start(20)
-	stop_timer.start(5000)
+	stop_timer.start(50000)
 	
 	dialer = Dialer()
 	
