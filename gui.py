@@ -6,6 +6,7 @@ class Dialer(QWidget):
     def __init__(self, sip):
         super(Dialer, self).__init__()
         self.sip = sip
+        self.call
         self.initUI()
 
     def initUI(self):
@@ -64,10 +65,10 @@ class Dialer(QWidget):
 
     def make_call(self, pressed):
         if self.buttonCall.text() == "Call":
-            self.sip.invite("sip:" + self.num_bar.text() + "@shookke.fl.3cx.us")
+            self.call = self.sip.invite("sip:" + self.num_bar.text() + "@shookke.fl.3cx.us")
             self.buttonCall.setText('End')
         else:
-            self.sip.terminate_call()
+            self.sip.terminate_call(self.call)
             self.buttonCall.setText('Call')
 
     def clear(self):
