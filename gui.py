@@ -70,6 +70,7 @@ class Dialer(QWidget):
         else:
             self.sip.terminate_call(self.call)
             self.buttonCall.setText('Call')
+            self.clear()
 
     def clear(self):
         self.num_bar.setText('')
