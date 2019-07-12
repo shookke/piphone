@@ -23,7 +23,7 @@ def main():
 	def call_state_changed(core, call, state, message):
 		logging.warning("registration_state_changed: " + str(state) + ", " + message)
 		if message == "Incoming call":
-			dialer.call_incoming()
+			dialer.call_incoming(call)
 
 	callbacks = {
 		'global_state_changed': global_state_changed,
