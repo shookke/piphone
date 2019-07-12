@@ -65,11 +65,12 @@ class Dialer(QWidget):
     def make_call(self, pressed):
         if self.buttonCall.text() == "Call":
             self.sip.invite("sip:" + self.num_bar.text() + "@shookke.fl.3cx.us")
-            self.buttonCall.text('End')
+            self.buttonCall.setText('End')
         else:
             self.sip.terminate_call()
-            self.buttonCall.text('Call')
+            self.buttonCall.setText('Call')
 
     def clear(self):
-        self.num_bar.text('')
+        self.num_bar.setText('')
+        self.num_to_dial = []
 
