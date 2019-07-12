@@ -35,8 +35,8 @@ class Dialer(QWidget):
         button0.move(150, 200)
         self.buttonCall = QPushButton("Call", self)
         self.buttonCall.move(270, 200)
-        buttonClear = QPushButton("Clear", self)
-        buttonClear.move(30, 200)
+        self.buttonClear = QPushButton("Clear", self)
+        self.buttonClear.move(30, 200)
 
         button1.clicked.connect(self.on_button_click)
         button2.clicked.connect(self.on_button_click)
@@ -49,7 +49,7 @@ class Dialer(QWidget):
         button9.clicked.connect(self.on_button_click)
         button0.clicked.connect(self.on_button_click)
         self.buttonCall.clicked.connect(self.make_call)
-        buttonClear.clicked.connect(self.clear)
+        self.buttonClear.clicked.connect(self.clear)
 
         self.setGeometry(300, 300, 400, 300)
         self.show()
@@ -68,11 +68,24 @@ class Dialer(QWidget):
             self.call = self.sip.invite("sip:" + self.num_bar.text() + "@shookke.fl.3cx.us")
             self.buttonCall.setText('End')
         else:
-            self.sip.terminate_call(self.call)
-            self.buttonCall.setText('Call')
-            self.clear()
+            self.end_call()
+
+    def end_call(self):
+        self.sip.terminate_call(self.call)
+        self.buttonCall.setText('Call')
+        self.clear()
+        self.buttonCall.clicked.connect(self.make_call)
+        self.buttonClear.clicked.connect(self.clear)
 
     def clear(self):
         self.num_bar.setText('')
         self.num_to_dial = []
+
+    def call_incoming(self):
+        self.buttonClear.setText('Ignore')
+        self.buttonClear.clicked.connect(self.endcall)
+        self.buttonCall.setText('Answer')
+        self.buttonCall.clicked.connect(self.make_call)
+
+    
 

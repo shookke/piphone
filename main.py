@@ -23,9 +23,13 @@ def main():
 	def registration_state_changed(core, call, state, message):
 		logging.warning("registration_state_changed: " + str(state) + ", " + message)
 
+	def call_state_changed(*args, **kwargs):
+		logging.warning("call_state_changed: %r %r" % (args,kwargs))
+
 	callbacks = {
 		'global_state_changed': global_state_changed,
 		'registration_state_changed': registration_state_changed,
+		'call_state_changed': call_state_changed,
 	}
 
 	linphone.set_log_handler(log_handler)
@@ -56,6 +60,8 @@ def main():
 	stop_timer.start(60000)
 	
 	dialer = Dialer(core)
+	
+	
 	
 	exitcode = app.exec_()
 	sys.exit(exitcode)
