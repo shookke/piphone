@@ -4,7 +4,7 @@ import sys
 class Dialer(QWidget):
 
     def __init__(self):
-        super().__init__()
+        super(Dialer, self).__init__()
         
         self.initUI()
 
