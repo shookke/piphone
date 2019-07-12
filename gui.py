@@ -11,7 +11,7 @@ class Dialer(QWidget):
     def initUI(self):
         
         self.num_to_dial = []
-        self.num_bar = QLabel(''.join(self.num_to_dial))
+        self.num_bar = QLabel(''.join(self.num_to_dial), self)
         button1 = QPushButton(str(1), self)
         button1.move(30, 50)
         button2 = QPushButton(str(2), self)
@@ -43,8 +43,8 @@ class Dialer(QWidget):
         button8.clicked.connect(self.on_button_click)
         button9.clicked.connect(self.on_button_click)
         button0.clicked.connect(self.on_button_click)
-        
-        self.setGeometry(300, 300, 290, 150)
+
+        self.setGeometry(300, 300, 300, 300)
         self.show()
         #self.showFullScreen()
 
