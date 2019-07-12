@@ -1,8 +1,9 @@
 import linphone
 import logging
 import sys
+from gui import Dialer
 from PyQt5.QtCore import QTimer
-from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QLabel, QVBoxLayout
+from PyQt5.QtWidgets import QApplication
 
 def main():
 	logging.basicConfig(level=logging.INFO)
@@ -12,6 +13,9 @@ def main():
 	def log_handler(level, msg):
 		method = getattr(logging, level)
 		method(msg)
+
+	def make_call(sip, num):
+		sip.invite("sip:" + num + "@shookke.fl.3cx.us")
 
 	def global_state_changed(*args, **kwargs):
 		logging.warning("global_state_changed: %r %r" % (args,kwargs))
@@ -42,7 +46,7 @@ def main():
 	proxy_cfg.register_enabled = True
 	core.add_proxy_config(proxy_cfg)
 	#core.invite("sip:000@shookke.fl.3cx.us")
-	core.invite("sip:3213013301@shookke.fl.3cx.us")
+	#core.invite("sip:3213013301@shookke.fl.3cx.us")
 
 	iterate_timer = QTimer()
 	iterate_timer.timeout.connect(core.iterate)
@@ -51,12 +55,7 @@ def main():
 	iterate_timer.start(20)
 	stop_timer.start(5000)
 	
-	window = QWidget()
-	layout = QVBoxLayout()
-	for num in range(0-9):
-		layout.addWidget(QPushButton(num))
-	window.setLayout(layout)
-	window.showFullScreen()
+	dialer = Dialer()
 	
 	exitcode = app.exec_()
 	sys.exit(exitcode)
