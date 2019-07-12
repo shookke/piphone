@@ -68,7 +68,7 @@ class Dialer(QWidget):
             self.call = self.sip.invite("sip:" + self.num_bar.text() + "@shookke.fl.3cx.us")
             self.buttonCall.setText('End')
         if self.buttonCall.text() == "Answer":
-            self.call = self.sip.accept_call(self.call)
+            self.sip.accept_call(self.call)
             self.buttonCall.setText('End')
         else:
             self.end_call()
