@@ -54,4 +54,5 @@ class Dialer(QWidget):
         self.num_to_dial.append(sender.text())
         dial = ''.join(self.num_to_dial)
         self.num_bar.setText(dial)
+        self.num_bar.adjustSize()
 
