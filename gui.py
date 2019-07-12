@@ -32,6 +32,8 @@ class Dialer(QWidget):
         button9.move(270, 150)
         button0 = QPushButton(str(0), self)
         button0.move(150, 200)
+        buttonCall = QPushButton("Call", self)
+        buttonCall.move(270, 200)
 
         button1.clicked.connect(self.on_button_click)
         button2.clicked.connect(self.on_button_click)
@@ -43,6 +45,7 @@ class Dialer(QWidget):
         button8.clicked.connect(self.on_button_click)
         button9.clicked.connect(self.on_button_click)
         button0.clicked.connect(self.on_button_click)
+        buttonCall.clicked.connect(self.make_call)
 
         self.setGeometry(300, 300, 300, 300)
         self.show()
