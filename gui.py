@@ -3,9 +3,9 @@ import sys
 
 class Dialer(QWidget):
 
-    def __init__(self):
+    def __init__(self, sip):
         super(Dialer, self).__init__()
-        
+        self.sip = sip
         self.initUI()
 
     def initUI(self):
@@ -55,4 +55,7 @@ class Dialer(QWidget):
         dial = ''.join(self.num_to_dial)
         self.num_bar.setText(dial)
         self.num_bar.adjustSize()
+
+    def make_call(self, pressed):
+        self.sip.invite("sip:" + self.num_bar.test() + "@shookke.fl.3cx.us")
 

@@ -53,9 +53,9 @@ def main():
 	stop_timer = QTimer()
 	stop_timer.timeout.connect(app.quit)
 	iterate_timer.start(20)
-	stop_timer.start(50000)
+	stop_timer.start(60000)
 	
-	dialer = Dialer()
+	dialer = Dialer(core)
 	
 	exitcode = app.exec_()
 	sys.exit(exitcode)
