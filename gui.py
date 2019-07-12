@@ -6,7 +6,7 @@ class Dialer(QWidget):
     def __init__(self, sip):
         super(Dialer, self).__init__()
         self.sip = sip
-        self.call
+        self.call = None
         self.initUI()
 
     def initUI(self):
