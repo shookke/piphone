@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QWidget, QPushButton, QFrame, QApplication
+from PyQt5.QtWidgets import QWidget, QPushButton, QFrame, QLabel
 import sys
 
 class Dialer(QWidget):
@@ -11,7 +11,7 @@ class Dialer(QWidget):
     def initUI(self):
         
         self.num_to_dial = []
-        self.statusBar()
+        self.num_bar = QLabel(''.join(self.num_to_dial))
         button1 = QPushButton(str(1))
         button1.clicked.connect(self.on_button_click)
         button2 = QPushButton(str(2))
@@ -41,5 +41,5 @@ class Dialer(QWidget):
         sender = self.sender()
         self.num_to_dial.append(sender.text())
         dial = ''.join(self.num_to_dial)
-        self.statusBar().showMessage(dial)
+        self.num_bar.setText(dial)
 
