@@ -47,7 +47,7 @@ class Dialer(QWidget):
         button0.clicked.connect(self.on_button_click)
         buttonCall.clicked.connect(self.make_call)
 
-        self.setGeometry(300, 300, 300, 300)
+        self.setGeometry(300, 300, 400, 300)
         self.show()
         #self.showFullScreen()
 
