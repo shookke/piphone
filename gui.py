@@ -32,8 +32,8 @@ class Dialer(QWidget):
         button9.move(270, 150)
         button0 = QPushButton(str(0), self)
         button0.move(150, 200)
-        buttonCall = QPushButton("Call", self)
-        buttonCall.move(270, 200)
+        self.buttonCall = QPushButton("Call", self)
+        self.buttonCall.move(270, 200)
         buttonClear = QPushButton("Clear", self)
         buttonClear.move(30, 200)
 
@@ -47,7 +47,7 @@ class Dialer(QWidget):
         button8.clicked.connect(self.on_button_click)
         button9.clicked.connect(self.on_button_click)
         button0.clicked.connect(self.on_button_click)
-        buttonCall.clicked.connect(self.make_call)
+        self.buttonCall.clicked.connect(self.make_call)
         buttonClear.clicked.connect(self.clear)
 
         self.setGeometry(300, 300, 400, 300)
@@ -63,8 +63,13 @@ class Dialer(QWidget):
         self.num_bar.adjustSize()
 
     def make_call(self, pressed):
-        self.sip.invite("sip:" + self.num_bar.text() + "@shookke.fl.3cx.us")
+        if self.buttonCall.text() == "Call":
+            self.sip.invite("sip:" + self.num_bar.text() + "@shookke.fl.3cx.us")
+            self.buttonCall.text('End')
+        else:
+            self.sip.terminate_call()
+            self.buttonCall.text('Call')
 
     def clear(self):
-        self.num_bar.text() = ''
+        self.num_bar.text('')
 
