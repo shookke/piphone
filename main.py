@@ -14,17 +14,16 @@ def main():
 		method = getattr(logging, level)
 		method(msg)
 
-	def make_call(sip, num):
-		sip.invite("sip:" + num + "@shookke.fl.3cx.us")
-
 	def global_state_changed(*args, **kwargs):
 		logging.warning("global_state_changed: %r %r" % (args,kwargs))
 
 	def registration_state_changed(core, call, state, message):
 		logging.warning("registration_state_changed: " + str(state) + ", " + message)
 
-	def call_state_changed(*args, **kwargs):
-		logging.warning("call_state_changed: %r %r" % (args,kwargs))
+	def call_state_changed(core, call, state, message):
+		logging.warning("registration_state_changed: " + str(state) + ", " + message)
+		if message == "Incoming call":
+			dialer.call_incoming()
 
 	callbacks = {
 		'global_state_changed': global_state_changed,
@@ -60,7 +59,6 @@ def main():
 	stop_timer.start(60000)
 	
 	dialer = Dialer(core)
-	
 	
 	
 	exitcode = app.exec_()
