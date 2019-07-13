@@ -24,8 +24,8 @@ def main():
 		logging.warning("call_state_changed: " + str(state) + ", " + message)
 		if message == "Incoming call":
 			dialer.call_incoming(call)
-		if message == "Call released":
-			dialer.incoming_terminated()
+		#if message == "Call released":
+			#dialer.incoming_terminated()
 
 	callbacks = {
 		'global_state_changed': global_state_changed,
