@@ -59,10 +59,10 @@ def main():
 	core.terminate_all_calls()
 	iterate_timer = QTimer()
 	iterate_timer.timeout.connect(core.iterate)
-	stop_timer = QTimer()
-	stop_timer.timeout.connect(app.quit)
+	#stop_timer = QTimer()
+	#stop_timer.timeout.connect(app.quit)
 	iterate_timer.start(20)
-	stop_timer.start(60000)
+	#stop_timer.start(60000)
 	
 	dialer = Dialer(core)
 	
