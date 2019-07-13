@@ -22,8 +22,8 @@ def main():
 
 	def call_state_changed(core, call, state, message):
 		logging.warning("call_state_changed: " + str(state) + ", " + message)
-		#if state == 6:
-			#dialer.call = call
+		if state == 6:
+			dialer.call = call
 		if state == 1:
 			dialer.call_incoming(call)
 		if state == 18:

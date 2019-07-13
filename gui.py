@@ -65,22 +65,22 @@ class Dialer(QWidget):
 
     def make_call(self, pressed):
         self.call = self.sip.invite("sip:" + self.num_bar.text() + "@shookke.fl.3cx.us")
-        self.buttonCall.setText('End')
         self.buttonCall.clicked.connect(self.end_call)
+        self.buttonCall.setText('End')
         
     def answer_call(self):
         self.sip.accept_call(self.call)
+        self.buttonCall.clicked.connect(self.end_call)
         self.buttonCall.setText('End')
         self.buttonClear.setText('Clear')
-        self.buttonCall.clicked.connect(self.end_call)
 
     def end_call(self):
         self.sip.terminate_call(self.call)
         self.call = None
-        self.buttonCall.setText('Call')
         self.clear()
         self.buttonCall.clicked.connect(self.make_call)
         self.buttonClear.clicked.connect(self.clear)
+        self.buttonCall.setText('Call')
         
     
     def decline_call(self):
@@ -94,10 +94,10 @@ class Dialer(QWidget):
         self.call = call
         self.num_bar.setText(self.call.user_data)
         self.num_bar.adjustSize()
-        self.buttonClear.setText('Ignore')
-        self.buttonCall.setText('Answer')
         self.buttonClear.clicked.connect(self.decline_call)
         self.buttonCall.clicked.connect(self.answer_call)
+        self.buttonClear.setText('Ignore')
+        self.buttonCall.setText('Answer')
 
     def incoming_terminated(self):
         self.call = None
