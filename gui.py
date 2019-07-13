@@ -1,5 +1,6 @@
 from PyQt5.QtWidgets import QWidget, QPushButton, QFrame, QLabel
 import sys
+import linphone
 
 class Dialer(QWidget):
 
@@ -82,7 +83,7 @@ class Dialer(QWidget):
         self.buttonClear.clicked.connect(self.clear)
     
     def decline_call(self):
-        self.sip.decline_call(self.call)
+        self.sip.decline_call(self.call, linphone.Reason.Decline)
 
     def clear(self):
         self.num_bar.setText('')
