@@ -55,7 +55,7 @@ def main():
 	core.add_proxy_config(proxy_cfg)
 	#core.invite("sip:000@shookke.fl.3cx.us")
 	#core.invite("sip:3213013301@shookke.fl.3cx.us")
-
+	core.terminate_all_calls()
 	iterate_timer = QTimer()
 	iterate_timer.timeout.connect(core.iterate)
 	stop_timer = QTimer()
