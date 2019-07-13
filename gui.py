@@ -78,6 +78,7 @@ class Dialer(QWidget):
     def end_call(self):
         self.sip.terminate_call(self.call)
         self.call = None
+        self.call_state = 0
         self.clear()
         #self.buttonCall.clicked.connect(self.make_call)
         #self.buttonClear.clicked.connect(self.clear)
