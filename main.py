@@ -25,7 +25,8 @@ def main():
 		if message == "Incoming call":
 			dialer.call_incoming(call)
 		if message == "Call released":
-			dialer.incoming_terminated()
+			#dialer.incoming_terminated()
+			return
 
 	callbacks = {
 		'global_state_changed': global_state_changed,
