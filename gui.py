@@ -80,7 +80,7 @@ class Dialer(QWidget):
         self.clear()
         self.buttonCall.clicked.connect(self.make_call)
         self.buttonClear.clicked.connect(self.clear)
-        self.sip.terminate_call(self.call)
+        self.sip.pause_call(self.call)
     
     def decline_call(self):
         self.sip.decline_call(self.call, linphone.Reason.Declined)
