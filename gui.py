@@ -70,7 +70,7 @@ class Dialer(QWidget):
         self.buttonCall.setText('End')
         
     def answer_call(self):
-        self.sip.accept_call(self.call)
+        self.call = self.sip.accept_call(self.call)
         #self.buttonCall.clicked.connect(self.end_call)
         self.buttonCall.setText('End')
         self.buttonClear.setText('Clear')
