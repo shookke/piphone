@@ -64,7 +64,7 @@ class Dialer(QWidget):
         self.num_bar.adjustSize()
 
     def make_call(self, pressed):
-        self.sip.invite("sip:" + self.num_bar.text() + "@shookke.fl.3cx.us")
+        self.call = self.sip.invite("sip:" + self.num_bar.text() + "@shookke.fl.3cx.us")
         self.buttonCall.setText('End')
         self.buttonCall.clicked.connect(self.end_call)
         
