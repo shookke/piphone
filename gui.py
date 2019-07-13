@@ -87,6 +87,8 @@ class Dialer(QWidget):
 
     def call_incoming(self, call):
         self.call = call
+        self.num_bar.setText(self.call.remote_contact())
+        self.num_bar.adjustSize()
         self.buttonClear.setText('Ignore')
         self.buttonCall.setText('Answer')
         self.buttonClear.clicked.connect(self.endcall)
