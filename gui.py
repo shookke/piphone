@@ -8,6 +8,7 @@ class Dialer(QWidget):
         super(Dialer, self).__init__()
         self.sip = sip
         self.call = None
+        self.call_state = 0
         self.initUI()
 
     def initUI(self):
@@ -49,7 +50,7 @@ class Dialer(QWidget):
         button8.clicked.connect(self.on_button_click)
         button9.clicked.connect(self.on_button_click)
         button0.clicked.connect(self.on_button_click)
-        self.buttonCall.clicked.connect(self.make_call)
+        self.buttonCall.clicked.connect(self.call_handler)
         self.buttonClear.clicked.connect(self.clear)
 
         self.setGeometry(300, 300, 400, 300)
@@ -63,14 +64,14 @@ class Dialer(QWidget):
         self.num_bar.setText(dial)
         self.num_bar.adjustSize()
 
-    def make_call(self, pressed):
+    def make_call(self):
         self.call = self.sip.invite("sip:" + self.num_bar.text() + "@shookke.fl.3cx.us")
-        self.buttonCall.clicked.connect(self.end_call)
+        #self.buttonCall.clicked.connect(self.end_call)
         self.buttonCall.setText('End')
         
     def answer_call(self):
         self.sip.accept_call(self.call)
-        self.buttonCall.clicked.connect(self.end_call)
+        #self.buttonCall.clicked.connect(self.end_call)
         self.buttonCall.setText('End')
         self.buttonClear.setText('Clear')
 
@@ -78,8 +79,8 @@ class Dialer(QWidget):
         self.sip.terminate_call(self.call)
         self.call = None
         self.clear()
-        self.buttonCall.clicked.connect(self.make_call)
-        self.buttonClear.clicked.connect(self.clear)
+        #self.buttonCall.clicked.connect(self.make_call)
+        #self.buttonClear.clicked.connect(self.clear)
         self.buttonCall.setText('Call')
         
     
@@ -92,10 +93,11 @@ class Dialer(QWidget):
 
     def call_incoming(self, call):
         self.call = call
+        self.call_state = self.call.state
         self.num_bar.setText(self.call.user_data)
         self.num_bar.adjustSize()
-        self.buttonClear.clicked.connect(self.decline_call)
-        self.buttonCall.clicked.connect(self.answer_call)
+        #self.buttonClear.clicked.connect(self.decline_call)
+        #self.buttonCall.clicked.connect(self.answer_call)
         self.buttonClear.setText('Ignore')
         self.buttonCall.setText('Answer')
 
@@ -104,3 +106,10 @@ class Dialer(QWidget):
         self.buttonCall.setText('Call')
         self.buttonClear.setText('Clear')
 
+    def call_handler(self):
+        if self.call_state == 1:
+            self.answer_call()
+        if self.call_state == 0:
+            self.make_call()
+        if self.call_state == 6:
+            self.end_call()
