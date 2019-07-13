@@ -92,5 +92,8 @@ class Dialer(QWidget):
         self.buttonClear.clicked.connect(self.endcall)
         self.buttonCall.clicked.connect(self.make_call)
 
-    
+    def incoming_terminated(self):
+        self.call = None
+        self.buttonCall.setText('Call')
+        self.buttonClear.setText('Clear')
 
