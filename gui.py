@@ -80,6 +80,9 @@ class Dialer(QWidget):
         self.clear()
         self.buttonCall.clicked.connect(self.make_call)
         self.buttonClear.clicked.connect(self.clear)
+    
+    def decline_call(self):
+        self.sip.decline_call(self.call)
 
     def clear(self):
         self.num_bar.setText('')
@@ -91,7 +94,7 @@ class Dialer(QWidget):
         self.num_bar.adjustSize()
         self.buttonClear.setText('Ignore')
         self.buttonCall.setText('Answer')
-        self.buttonClear.clicked.connect(self.endcall)
+        self.buttonClear.clicked.connect(self.decline_call())
         self.buttonCall.clicked.connect(self.make_call)
 
     def incoming_terminated(self):
