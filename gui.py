@@ -83,9 +83,8 @@ class Dialer(QWidget):
         self.buttonClear.clicked.connect(self.clear)
     
     def decline_call(self):
-        #self.sip.decline_call(self.call, linphone.Reason.Declined)
-        return 
-        
+        self.sip.decline_call(self.call, linphone.Reason.Declined)
+
     def clear(self):
         self.num_bar.setText('')
         self.num_to_dial = []

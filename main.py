@@ -22,6 +22,8 @@ def main():
 
 	def call_state_changed(core, call, state, message):
 		logging.warning("call_state_changed: " + str(state) + ", " + message)
+		if message == "Connected":
+			dialer.call = call
 		if message == "Incoming call":
 			dialer.call_incoming(call)
 		if message == "Call released":
