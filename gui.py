@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import QWidget, QPushButton, QFrame, QLabel
 import sys
-import linphone
+#import linphone
 
 class Dialer(QWidget):
 
@@ -57,7 +57,6 @@ class Dialer(QWidget):
         #self.showFullScreen()
 
     def on_button_click(self, pressed):
-        
         sender = self.sender()
         self.num_to_dial.append(sender.text())
         dial = ''.join(self.num_to_dial)
@@ -84,8 +83,9 @@ class Dialer(QWidget):
         self.buttonClear.clicked.connect(self.clear)
     
     def decline_call(self):
-        self.sip.decline_call(self.call, linphone.Reason.Declined)
-
+        #self.sip.decline_call(self.call, linphone.Reason.Declined)
+        return 
+        
     def clear(self):
         self.num_bar.setText('')
         self.num_to_dial = []
