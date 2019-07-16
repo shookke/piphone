@@ -58,8 +58,8 @@ def main():
 	#core.invite("sip:3213013301@shookke.fl.3cx.us")
 	core.terminate_all_calls()
 	audio = core.sound_devices
-	core.playback_device = audio[1]
-
+	#core.playback_device = audio[1]
+	print (audio)
 	iterate_timer = QTimer()
 	iterate_timer.timeout.connect(core.iterate)
 	#stop_timer = QTimer()
