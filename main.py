@@ -59,6 +59,7 @@ def main():
 	core.terminate_all_calls()
 	audio = core.sound_devices
 	#core.playback_device = audio[1]
+	core.mic_gain_db = 11.0
 	print (audio)
 	iterate_timer = QTimer()
 	iterate_timer.timeout.connect(core.iterate)
