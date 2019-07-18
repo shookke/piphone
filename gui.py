@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QWidget, QPushButton, QFrame, QLabel
+from PyQt5.QtWidgets import QWidget, QPushButton, QFrame, QLabel, QHBoxLayout, QGroupBox, QDialog, QVBoxLayout, QGridLayout
 from PyQt5 import QtGui, QtCore
 import sys
 import linphone
