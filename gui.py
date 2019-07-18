@@ -21,18 +21,20 @@ class Dialer(QWidget):
         self.setGeometry(self.left, self.top, self.width, self.height)
         self.createGridLayout()
 
-        windowLayout = QVBoxLayout()
-        windowLayout.addWidget(self.horizontalGroupBox)
-        self.setLayout(windowLayout)
+        self.windowLayout = QVBoxLayout()
+        #self.windowLayout.addWidget(self.displayBox)
+        self.windowLayout.addWidget(self.horizontalGroupBox)
+        self.setLayout(self.windowLayout)
 
         self.show()
         #self.showFullScreen()
     
     def createGridLayout(self):
-        self.horizontalGroupBox = QGroupBox("Grid")
+        self.horizontalGroupBox = QGroupBox()
         layout = QGridLayout()
         layout.setColumnStretch(1, 4)
         layout.setColumnStretch(2, 4)
+        #lcd = QLCDNumber(self)
 
         self.num_to_dial = []
         self.num_bar = QLabel(''.join(self.num_to_dial), self)
@@ -64,9 +66,9 @@ class Dialer(QWidget):
         layout.addWidget(button_hash,3,2)
 
         self.buttonCall = QPushButton("Call", self)
-        self.buttonCall.move(270, 200)
+        layout.addWidget(self.buttonCall,4,0)
         self.buttonClear = QPushButton("Clear", self)
-        self.buttonClear.move(30, 200)
+        layout.addWidget(self.buttonClear,4,2)
 
         button1.clicked.connect(self.on_button_click)
         button2.clicked.connect(self.on_button_click)
