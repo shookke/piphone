@@ -10,33 +10,47 @@ class Dialer(QWidget):
         self.sip = sip
         self.call = None
         self.call_state = 0
+        self.left = 10
+        self.top = 10
+        self.width = 320
+        self.height = 100
         self.initUI()
 
     def initUI(self):
         
+        self.setGeometry(self.left, self.top, self.width, self.height)
+        self.createGridLayout()
+
+        windowLayout = QVBoxLayout()
+        windowLayout.addWidget(self.horizontalGroupBox)
+        self.setLayout(windowLayout)
+
+        self.show()
+        #self.showFullScreen()
+    
+    def createGridLayout(self):
+        self.horizontalGroupBox = QGroupBox("Grid")
+        layout = QGridLayout()
+        layout.setColumnStretch(1, 4)
+        layout.setColumnStretch(2, 4)
+
         self.num_to_dial = []
         self.num_bar = QLabel(''.join(self.num_to_dial), self)
         self.cursor = QtGui.QCursor(QtCore.Qt.BlankCursor)
-        button1 = QPushButton(str(1), self)
-        button1.move(30, 50)
-        button2 = QPushButton(str(2), self)
-        button2.move(150, 50)
-        button3 = QPushButton(str(3), self)
-        button3.move(270, 50)
-        button4 = QPushButton(str(4), self)
-        button4.move(30, 100)
-        button5 = QPushButton(str(5), self)
-        button5.move(150, 100)
-        button6 = QPushButton(str(6), self)
-        button6.move(270, 100)
-        button7 = QPushButton(str(7), self)
-        button7.move(30, 150)
-        button8 = QPushButton(str(8), self)
-        button8.move(150, 150)
-        button9 = QPushButton(str(9), self)
-        button9.move(270, 150)
-        button0 = QPushButton(str(0), self)
-        button0.move(150, 200)
+
+        button1 = layout.addWidget(QPushButton('1'),0,0)
+        button2 = layout.addWidget(QPushButton('2'),0,1)
+        button3 = layout.addWidget(QPushButton('3'),0,2)
+        button4 = layout.addWidget(QPushButton('4'),1,0)
+        button5 = layout.addWidget(QPushButton('5'),1,1)
+        button6 = layout.addWidget(QPushButton('6'),1,2)
+        button7 = layout.addWidget(QPushButton('7'),2,0)
+        button8 = layout.addWidget(QPushButton('8'),2,1)
+        button9 = layout.addWidget(QPushButton('9'),2,2)
+        button_astr = layout.addWidget(QPushButton('*'),3,0)
+        button0 = layout.addWidget(QPushButton('0'),3,1)
+        button_hash = layout.addWidget(QPushButton('#'),3,2)
+
         self.buttonCall = QPushButton("Call", self)
         self.buttonCall.move(270, 200)
         self.buttonClear = QPushButton("Clear", self)
@@ -52,12 +66,13 @@ class Dialer(QWidget):
         button8.clicked.connect(self.on_button_click)
         button9.clicked.connect(self.on_button_click)
         button0.clicked.connect(self.on_button_click)
+        button_astr.clicked.connect(self.on_button_click)
+        button_hash.clicked.connect(self.on_button_click)
+        
         self.buttonCall.clicked.connect(self.call_handler)
         self.buttonClear.clicked.connect(self.clear)
 
-        self.setGeometry(300, 300, 400, 300)
-        self.show()
-        #self.showFullScreen()
+        self.horizontalGroupBox.setLayout(layout
 
     def on_button_click(self, pressed):
         sender = self.sender()
