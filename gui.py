@@ -13,7 +13,7 @@ class Dialer(QWidget):
         self.left = 10
         self.top = 10
         self.width = 320
-        self.height = 100
+        self.height = 200
         self.initUI()
 
     def initUI(self):
@@ -66,9 +66,9 @@ class Dialer(QWidget):
         layout.addWidget(button_hash,3,2)
 
         self.buttonCall = QPushButton("Call", self)
-        layout.addWidget(self.buttonCall,4,0)
+        layout.addWidget(self.buttonCall,4,2)
         self.buttonClear = QPushButton("Clear", self)
-        layout.addWidget(self.buttonClear,4,2)
+        layout.addWidget(self.buttonClear,4,0)
 
         button1.clicked.connect(self.on_button_click)
         button2.clicked.connect(self.on_button_click)
