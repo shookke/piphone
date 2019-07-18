@@ -68,11 +68,11 @@ class Dialer(QWidget):
         button0.clicked.connect(self.on_button_click)
         button_astr.clicked.connect(self.on_button_click)
         button_hash.clicked.connect(self.on_button_click)
-        
+
         self.buttonCall.clicked.connect(self.call_handler)
         self.buttonClear.clicked.connect(self.clear)
 
-        self.horizontalGroupBox.setLayout(layout
+        self.horizontalGroupBox.setLayout(layout)
 
     def on_button_click(self, pressed):
         sender = self.sender()
