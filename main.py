@@ -46,17 +46,12 @@ def main():
 	auth.passwd = "g2RfaXrwNg"
 	auth.userid = "zlE7Ln8bvD"
 	core.add_auth_info(auth)
-	#account.password = "3l4bgu0r0wmt"
-	#account.username = "000"
-	#account.test_validation()
 	proxy_cfg = core.create_proxy_config()
 	core.provisioning_uri = "https://shookke.fl.3cx.us/provisioning/wuvqph5halzuac4"
 	proxy_cfg.identity_address = address
 	proxy_cfg.server_addr = "sip:shookke.fl.3cx.us"
 	proxy_cfg.register_enabled = True
 	core.add_proxy_config(proxy_cfg)
-	#core.invite("sip:000@shookke.fl.3cx.us")
-	#core.invite("sip:3213013301@shookke.fl.3cx.us")
 	core.terminate_all_calls()
 	audio = core.sound_devices
 	#core.playback_device = audio[1]

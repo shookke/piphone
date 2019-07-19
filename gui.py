@@ -25,7 +25,6 @@ class Dialer(QWidget):
         self.createGridLayout()
 
         self.windowLayout = QVBoxLayout()
-        #self.windowLayout.addWidget(self.displayBox)
         self.windowLayout.addWidget(self.horizontalGroupBox)
         self.setLayout(self.windowLayout)
 
@@ -47,7 +46,6 @@ class Dialer(QWidget):
         layout.addWidget(self.num_bar, 0,0,1,3, self.num_bar.alignment())
         button1 = QPushButton('1', self)
         button1.setMinimumSize(50,50)
-        #button1.setFlat(True)
         layout.addWidget(button1,1,0)
         button2 = QPushButton('2', self)
         button2.setMinimumSize(50,50)
@@ -124,12 +122,10 @@ class Dialer(QWidget):
 
     def make_call(self):
         self.call = self.sip.invite("sip:" + self.num_bar.text() + "@shookke.fl.3cx.us")
-        #self.buttonCall.clicked.connect(self.end_call)
         self.buttonCall.setText('End')
         
     def answer_call(self):
         self.sip.accept_call(self.call)
-        #self.buttonCall.clicked.connect(self.end_call)
         self.buttonCall.setText('End')
         self.buttonClear.setText('Clear')
 
@@ -138,8 +134,6 @@ class Dialer(QWidget):
         self.call = None
         self.call_state = 0
         self.clear()
-        #self.buttonCall.clicked.connect(self.make_call)
-        #self.buttonClear.clicked.connect(self.clear)
         self.buttonCall.setText('Call')
         
     
@@ -147,6 +141,9 @@ class Dialer(QWidget):
         self.sip.decline_call(self.call, linphone.Reason.Declined)
 
     def clear(self):
+        sender = self.sender()
+        if sender.text() == 'Ignore':
+            self.decline_call()
         self.num_bar.setText('')
         self.num_to_dial = []
 
@@ -155,8 +152,6 @@ class Dialer(QWidget):
         self.call_state = self.call.state
         self.num_bar.setText(self.call.user_data)
         self.num_bar.adjustSize()
-        #self.buttonClear.clicked.connect(self.decline_call)
-        #self.buttonCall.clicked.connect(self.answer_call)
         self.buttonClear.setText('Ignore')
         self.buttonCall.setText('Answer')
 
