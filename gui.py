@@ -42,7 +42,7 @@ class Dialer(QWidget):
 
         button1 = QPushButton('1', self).setFlat(True)
         layout.addWidget(button1,0,0)
-        button2 = QPushButton('2', self).sizeHint()
+        button2 = QPushButton('2', self)
         layout.addWidget(button2,0,1)
         button3 = QPushButton('3', self)
         layout.addWidget(button3,0,2)
