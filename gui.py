@@ -38,10 +38,11 @@ class Dialer(QWidget):
         layout.setColumnStretch(1, 4)
         layout.setColumnStretch(2, 4)
         #lcd = QLCDNumber(self)
-
+        self.ui_font = QtGui.QFont("Arial", 12, QtGui.QFont.Bold)
         self.num_to_dial = []
         self.num_bar = QLabel(''.join(self.num_to_dial), self)
         self.num_bar.setAlignment(QtCore.Qt.AlignRight)
+        self.num_bar.setFont(self.ui_font)
         self.cursor = QtGui.QCursor(QtCore.Qt.BlankCursor)
         layout.addWidget(self.num_bar, 0,0,1,3, self.num_bar.alignment())
         button1 = QPushButton('1', self)
