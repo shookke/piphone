@@ -44,7 +44,7 @@ class Dialer(QWidget):
         self.cursor = QtGui.QCursor(QtCore.Qt.BlankCursor)
 
         button1 = QPushButton('1', self)
-        button1.adjustSize(50,50)
+        button1.geometry(50,50)
         #button1.setFlat(True)
         layout.addWidget(button1,0,0)
         button2 = QPushButton('2', self)
