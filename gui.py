@@ -94,6 +94,10 @@ class Dialer(QWidget):
         dial = ''.join(self.num_to_dial)
         self.num_bar.setText(dial)
         self.num_bar.adjustSize()
+        if self.call_state == 6:
+            self.call.send_dtmf(sender.text())
+
+
 
     def make_call(self):
         self.call = self.sip.invite("sip:" + self.num_bar.text() + "@shookke.fl.3cx.us")
