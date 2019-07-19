@@ -61,6 +61,7 @@ def main():
 	audio = core.sound_devices
 	#core.playback_device = audio[1]
 	core.mic_gain_db = 11.0
+	core.ring = '/usr/local/lib/python2.7/dist-packages/linphone/share/sounds/linphone/rings/oldphone.wav'
 	print (audio)
 	iterate_timer = QTimer()
 	iterate_timer.timeout.connect(core.iterate)
