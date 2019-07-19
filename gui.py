@@ -95,7 +95,9 @@ class Dialer(QWidget):
         self.num_bar.setText(dial)
         self.num_bar.adjustSize()
         if self.call_state == 6:
-            self.call.send_dtmf(sender.text())
+            self.sip.start_dtmf_stream()
+            self.sip.play_dtmf(sender.txt(), 50)
+            self.sip.stop_dtmf_stream()
 
 
 
