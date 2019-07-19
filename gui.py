@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QWidget, QPushButton, QFrame, QLabel, QHBoxLayout, QGroupBox, QDialog, QVBoxLayout, QGridLayout
+from PyQt5.QtWidgets import QStyle, QWidget, QPushButton, QFrame, QLabel, QHBoxLayout, QGroupBox, QDialog, QVBoxLayout, QGridLayout
 from PyQt5 import QtGui, QtCore
 import sys
 import linphone
@@ -19,6 +19,9 @@ class Dialer(QWidget):
     def initUI(self):
         
         self.setGeometry(self.left, self.top, self.width, self.height)
+        self.button_size = QtCore.QSize()
+        self.button_size.setHeight(50)
+        self.button_size.setWidth(50)
         self.createGridLayout()
 
         self.windowLayout = QVBoxLayout()
@@ -41,7 +44,8 @@ class Dialer(QWidget):
         self.cursor = QtGui.QCursor(QtCore.Qt.BlankCursor)
 
         button1 = QPushButton('1', self)
-        button1.setFlat(True)
+        button1.adjustSize(self.button_size)
+        #button1.setFlat(True)
         layout.addWidget(button1,0,0)
         button2 = QPushButton('2', self)
         layout.addWidget(button2,0,1)
