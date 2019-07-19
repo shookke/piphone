@@ -40,9 +40,9 @@ class Dialer(QWidget):
         self.num_bar = QLabel(''.join(self.num_to_dial), self)
         self.cursor = QtGui.QCursor(QtCore.Qt.BlankCursor)
 
-        button1 = QPushButton('1', self).setFlat(True).sizeHint()
+        button1 = QPushButton('1', self).setFlat(True)
         layout.addWidget(button1,0,0)
-        button2 = QPushButton('2', self)
+        button2 = QPushButton('2', self).sizeHint()
         layout.addWidget(button2,0,1)
         button3 = QPushButton('3', self)
         layout.addWidget(button3,0,2)
