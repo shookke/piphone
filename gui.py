@@ -166,7 +166,7 @@ class Dialer(QWidget):
             self.answer_call()
         elif self.call_state == 0 and self.num_bar != '':
             self.make_call()
-        elif self.call_state == 4:
+        elif self.call_state == 3:
             self.end_call()
         elif self.call_state == 6:
             self.end_call()

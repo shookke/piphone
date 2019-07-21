@@ -25,7 +25,7 @@ def main():
 		
 		if state == 1:
 			dialer.call_incoming(call)
-		if state == 4:
+		if state == 3:
 			dialer.call_state = state
 		if state == 6:
 			dialer.call = call
