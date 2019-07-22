@@ -23,16 +23,16 @@ def main():
 	def call_state_changed(core, call, state, message):
 		logging.warning("call_state_changed: " + str(state) + ", " + message)
 		
-		if state == 1:
+		if state == linphone.CallState.IncomingReceived:
 			dialer.call_incoming(call)
-		if state == 3:
+		if state == linphone.CallState.OutgoingProgress:
 			dialer.call_state = state
-		if state == 6:
+		if state == linphone.CallState.Connected:
 			dialer.call = call
 			dialer.call_state = state
 		if state == linphone.CallState.End:
 			dialer.num_bar.setText('')
-		if state == 18:
+		if state == linphone.CallState.Released:
 			dialer.incoming_terminated()
 
 
