@@ -30,7 +30,7 @@ def main():
 		if state == 6:
 			dialer.call = call
 			dialer.call_state = state
-		if state == core.CallState.End:
+		if state == linphone.CallState.End:
 			dialer.num_bar.setText('')
 		if state == 18:
 			dialer.incoming_terminated()
