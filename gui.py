@@ -10,8 +10,8 @@ class Dialer(QWidget):
         self.sip = sip
         self.call = None
         self.call_state = 0
-        self.left = 400
-        self.top = 360
+        self.left = 360
+        self.top = 500
         self.width = 320
         self.height = 200
         self.initUI()
