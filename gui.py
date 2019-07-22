@@ -37,7 +37,7 @@ class Dialer(QWidget):
         #layout.setColumnStretch(1, 4)
         #layout.setColumnStretch(2, 4)
         #lcd = QLCDNumber(self)
-        self.ui_font = QtGui.QFont("Arial", 15, QtGui.QFont.Bold)
+        self.ui_font = QtGui.QFont("Arial", 25, QtGui.QFont.Bold)
         self.num_to_dial = []
         self.num_bar = QLabel(''.join(self.num_to_dial), self)
         self.num_bar.setAlignment(QtCore.Qt.AlignRight)
