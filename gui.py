@@ -114,8 +114,8 @@ class Dialer(QWidget):
         self.num_bar.adjustSize()
         if self.call_state == 6:
             self.sip.start_dtmf_stream()
-            self.sip.play_dtmf(chr(int(sender.text())), 1000)
-            print (sender.text())
+            self.sip.play_dtmf(int(sender.text()), 1000)
+            print (int(sender.text()))
             #self.sip.stop_dtmf_stream()
 
 
