@@ -42,6 +42,7 @@ class Dialer(QWidget):
         self.num_bar = QLabel(''.join(self.num_to_dial), self)
         self.num_bar.setAlignment(QtCore.Qt.AlignRight)
         self.num_bar.setFont(self.ui_font)
+        self.num_bar.setWordWrap(True)
         self.cursor = QtGui.QCursor(QtCore.Qt.BlankCursor)
         layout.addWidget(self.num_bar, 0,0,1,3, self.num_bar.alignment())
         button1 = QPushButton('1', self)
